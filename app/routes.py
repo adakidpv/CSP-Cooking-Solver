@@ -7,6 +7,10 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('index.html')
 
+@main.route('/health', methods=['GET'])
+def health():
+    return jsonify({"status": "healthy"}), 200
+
 @main.route('/solve', methods=['POST'])
 def solve():
     data = request.json
