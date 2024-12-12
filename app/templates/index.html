@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSP Cooking Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="problem-box">
+                <h2>Members:</h2>
+                <ul>
+                    <li>Akhil Anil Kumar - 8329114</li>
+                    <li>Yasin Sheikh - 8140352</li>
+                    <li>Nigel Noronha - 7340667</li>
+                </ul>
+            </div>
+            <div class="problem-box">
+                <h2>Problem Statement</h2>
+                <p>
+                    Plan to cook a large meal on a K-burner stove. You have to cook N dishes,
+                    each of which must be started in a clean pan and needs to cook for a certain
+                    (uninterrupted) amount of time. You have a limited number of pans. If you need to reuse a pan,
+                    it will take a fixed amount of time (3 minutes) to clean it.
+                </p>
+                <h3>Constraints</h3>
+                <ul>
+                    <li>All pans are clean at the start of the process.</li>
+                    <li>Each dish requires uninterrupted cooking time.</li>
+                    <li>Cleaning time for pans is fixed at 3 minutes.</li>
+                    <li>Burners and pans are shared resources.</li>
+                </ul>
+            </div>
+
+            <div id="stepVisualization" class="problem-box">
+                <h2>Step-by-Step Solution</h2>
+                <ul id="stepsList"></ul>
+            </div>
+
+            <div id="domainVisualization" class="problem-box">
+                <h2>Domain Updates</h2>
+                <div id="domainTable"></div>
+            </div>
+        </div>
+
+        <div class="right">
+            <h1>CSP Cooking Solver</h1>
+            <form id="cspForm">
+                <label for="numBurners">Number of Burners:</label>
+                <input type="number" id="numBurners" name="numBurners" required>
+                <label for="numPans">Number of Pans:</label>
+                <input type="number" id="numPans" name="numPans" required>
+
+                <label for="dishesDropdown">Select Dish:</label>
+                <select id="dishesDropdown">
+                    <option value='{"name":"Roast Chicken","cooking_time":90}'>Roast Chicken (Cooking: 90 min)</option>
+                    <option value='{"name":"Vegetable Risotto","cooking_time":45}'>Vegetable Risotto (Cooking: 45 min)</option>
+                    <option value='{"name":"Chocolate Souffle","cooking_time":30}'>Chocolate Souffle (Cooking: 30 min)</option>
+                </select>
+                <button type="button" id="addDishButton">Add Dish</button>
+
+                <h3>Selected Dishes:</h3>
+                <ul id="selectedDishesList"></ul>
+
+                <button type="submit">Solve</button>
+            </form>
+            <div id="legend">
+                <span class="clean">Clean</span>
+                <span class="cook">Cook</span>
+            </div>
+            <div id="visualization"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
