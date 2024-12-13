@@ -1,11 +1,17 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, send_from_directory
 from app.solver import CookingCSP
+
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
     return render_template('index.html')
+
+@main.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('static', path)
+
 
 @main.route('/health', methods=['GET'])
 def health():
