@@ -15,7 +15,7 @@ This is a web-based application that solves a cooking Constraint Satisfaction Pr
 ## Setup Instructions
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/CSP-Cooking-Solver.git
+   git clone https://github.com/adakidpv/CSP-Cooking-Solver.git
    ```
 2. Navigate to the project directory:
    ```
